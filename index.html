@@ -1,43 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <title>AEMET-Valencia</title>
 </head>
 <body>
-    <header>
-        <h2>Meteo Valencia</h2>
-    </header>
-<div id="panelPrincipal">
-    <div class="panelTabla">
-          <div class="dropdown">
+  <header>
+      <h2>Meteo Valencia</h2>
+  </header>
+
+  <div id="panelPrincipal">
+      <div id="panelTabla">
+          <div class="dropdown" style="margin-bottom: 2rem;">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Mostrar información
+                  Mostrar información
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" id="hoy">Hoy</a></li>
-                <li><a class="dropdown-item" id="manyana">Mañana</a></li>
-                <li><a class="dropdown-item" id="pasadoManyana">Pasado mañana</a></li>
+                  <li><a class="dropdown-item" id="hoy">Hoy</a></li>
+                  <li><a class="dropdown-item" id="manyana">Mañana</a></li>
+                  <li><a class="dropdown-item" id="pasadoManyana">Pasado mañana</a></li>
               </ul>
-            </div>
-    <table class="table table-bordered tabla-temperatura table-striped">
-        <thead>
-            <tr> 
-                <th>Hora</th>
-                <th>temperatura</th>
-                <th>Viento</th>
-            </tr>
-        </thead>
-        <tbody>
+          </div>
+      </div>
+  </div>
 
-        </tbody>
+  <template id="tablaAemet">
+      <style>
+      :host {
+          --theme-color: #575353;
+          --theme-background-color: #aaa;
+          --space: 1.5em;
+      }
+          tbody, td, tfoot, th, thead, tr {
+              border-color: inherit;
+              border-style: solid;
+              border-width: 0;
+              padding: 4px;
+              border: 1px solid #575353;
+              text-align: center;
+          }
+          th{
+              background-color: #575353;
+              color: #fff;
+          }
+          .table {
+              width: 100%;
+              margin-bottom: 1rem;
+              color: #575353;
+              vertical-align: top;
+              border-color: #dee2e6;
+          }
+          .table>thead {
+              vertical-align: bottom;
+          }
+          table {
+              caption-side: bottom;
+              border-collapse: collapse;
+          }
+      </style>
+
+      <table id="tabla-aemet" class="table">
+          <thead></thead>
+          <tbody></tbody>
       </table>
-</div>
-</div>
+
+  </template>
+
+
+<script src="components/tabla-aemet.js"></script>
 <script src="aemet.api.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
